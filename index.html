@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="desktop">
+<main class="desktop" id="top">
 
   <section class="win about" aria-labelledby="about-t">
     <div class="tbar"><h2 id="about-t">About_Samiha.exe</h2><span class="btns" aria-hidden="true"><b>_</b><b>&#9633;</b><b>&#215;</b></span></div>
@@ -206,11 +206,17 @@
 </main>
 
 <footer class="taskbar">
-  <span class="start">&#9654; Samiha Sharlin</span>
+  <a class="start" href="#top" title="Back to top">&#9654; Samiha Sharlin</a>
   <nav class="tasks" aria-label="Research">
     <a href="#physics">PhysicsAwareAI.exe</a><a href="#software">ScientificSoftware.exe</a><a href="#verified">VerifiedCode.exe</a>
   </nav>
-  <span class="tray">Available: June 2027</span>
+  <time class="tray" id="clock" aria-label="Current time"></time>
 </footer>
+<script>
+  // Win95 tray clock: local time, h:mm AM/PM
+  const clock = document.getElementById("clock");
+  const tick = () => { clock.textContent = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }); };
+  tick(); setInterval(tick, 10000);
+</script>
 </body>
 </html>
