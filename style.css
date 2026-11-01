@@ -144,7 +144,7 @@ li { margin: 4px 0; }
 .tk { position: absolute; right: -6px; bottom: -4px; width: 18px; height: 18px; background: #0a8a2a; color: #fff; font: bold 13px/18px var(--sans); text-align: center; border: 1px solid #000; }
 .pbar { height: 20px; border: 2px solid; border-color: var(--sunken); background: #fff; padding: 2px; display: flex; gap: 2px; margin: 8px 0; }
 .pbar i { width: 4%; background: var(--navy); }
-.cdrow { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.cdrow { display: flex; justify-content: flex-end; }
 
 /* help */
 .helps { display: grid; gap: 14px; }
@@ -174,11 +174,15 @@ li { margin: 4px 0; }
 
 /* wider screens: poster-like layout */
 @media (min-width: 760px) {
-  .row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: stretch; }
+  /* Experience.log is the longest window: full width on medium screens, the wide middle column on large ones */
+  .row3 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch; }
+  .row3 > .exp { grid-column: 1 / -1; order: 3; }
   .helps { grid-template-columns: repeat(3, 1fr); }
   .pubs { grid-template-columns: 1fr 1fr; gap: 24px; }
 }
 @media (min-width: 1000px) {
+  .row3 { grid-template-columns: 1fr 1.7fr 1fr; }
+  .row3 > .exp { grid-column: auto; order: 0; }
   .split { display: grid; grid-template-columns: 1fr 1.15fr; grid-template-areas: "a fig" "b fig"; column-gap: 24px; align-content: start; }
   .split > .a { grid-area: a; }
   .split > .fig { grid-area: fig; align-self: center; }
